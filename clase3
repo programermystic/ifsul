@@ -1,0 +1,61 @@
+package paquete3;
+
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
+;
+
+
+public class clase3 {
+	private static Map<String,Double> mapa = new HashMap<String,Double>();
+	final static Map<String, Double> sortedByCount =new HashMap<String,Double>();
+	Scanner ler = new Scanner(System.in);
+	String estudiantes;
+	Double promedio;
+	String resultado="";
+	public void registrar(String estudiantes,String promedio)
+	{
+		this.promedio=Double.parseDouble(promedio);
+		this.mapa.put(estudiantes,this.promedio);
+		
+	
+     
+	}
+	public static Map<String, Double> ordenar(Map<String,Double> mapa)
+	{
+	      List<Entry<String, Double>> list = new ArrayList<>(mapa.entrySet());
+	        //list.sort(Entry.comparingByValue());
+	      list.sort(Collections.reverseOrder(Map.Entry.comparingByValue()));
+	        Map<String, Double> result = new LinkedHashMap<>();
+	        for (Entry<String, Double> entry : list) {
+	            result.put(entry.getKey(), entry.getValue());
+	        }
+	      
+	        return result;
+			
+	}
+
+public void muestra(Map<String,Double> result)
+{
+	for (Entry<String, Double> entry : result.entrySet()) {
+	    resultado=resultado+( entry.getKey()+" "+entry.getValue()+"\n");
+	}
+}
+				
+		
+	public String loop(int comodin,String[] lista)
+	{
+		Integer i=0;
+		while(i<comodin*2)
+		{
+			this.registrar(lista[i],lista[i+1]);
+			i=i+2;
+		}
+		muestra(ordenar(mapa));
+
+	return resultado;
+		
+		
+	}
+	
+}
