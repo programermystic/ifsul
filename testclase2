@@ -1,0 +1,16 @@
+package paquete2;
+
+import junit.framework.TestCase;
+import java.util.*;
+
+public class clase2Test extends TestCase {
+
+	static final int comodin=3;
+	String[] datos = new String[]{"jose perez","99925554","maria cabral","99854741","pedro cardozo","98556632","jose perez","cardozo pedro","lara Fonseca"}; 
+	public void testLoop() {
+		clase2 obj=new clase2();
+		String retorno=obj.loop(3,datos);
+		assertEquals("resultado","jose perez=99925554\npedro cardozo=98556632\nNo encontrado\n" ,retorno);
+	}
+
+}
