@@ -1,0 +1,42 @@
+package paquete1;
+import java.io.*;
+import java.util.*;
+
+public class clase1 {
+	private int valor;
+	String resultado="";
+	
+
+	public String dividir(String x,String y) throws IOException
+	{
+		try {
+			int X = Integer.parseInt(x);
+			int Y = Integer.parseInt(y);
+			System.out.println(X+Y);
+			valor=(X/Y);
+			resultado = Integer.toString(valor);
+		
+		
+		}
+		catch(java.lang.NumberFormatException e)
+		{
+			resultado=("java.util.InputMismatchException");
+		}
+		catch(InputMismatchException e)
+		{
+			resultado=("java.util.InputMismatchException");
+			
+			
+			
+		}
+		catch(ArithmeticException e)
+		{
+			resultado=("java.lang.ArithmeticException: / by zero");
+			
+			
+		}
+		 
+		return resultado;
+	}
+
+}
