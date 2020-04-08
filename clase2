@@ -1,0 +1,159 @@
+package paquete2;
+
+import java.util.*;
+import java.util.Map.Entry;
+
+
+public class clase2 {
+	private static final int ArrayList = 0;
+	private Map<String,String> mapa = new HashMap<String,String>();
+	private String nombre;
+	private String telefono;
+	List<List<String>> resultado = new ArrayList<List<String>>();
+	ArrayList<String> A = new ArrayList<String>();
+	ArrayList<String> B = new ArrayList<String>();
+	ArrayList<String> C= new ArrayList<String>();
+	ArrayList<String> D = new ArrayList<String>();
+	Scanner ler = new Scanner(System.in); 
+	
+	public void registrar(String nombre,String telefono)
+	{
+		
+		this.mapa.put(nombre,telefono);
+		
+	
+     
+	}
+	
+	public void recibe(String nombre)
+	{
+		for (Entry<String, String> entry : mapa.entrySet()) {
+			
+			
+				A.add(entry.getKey());
+				B.add(entry.getValue());
+				
+				
+		  
+			
+			
+		   
+		}
+		
+	}	
+	public void clasifica(String nombre)
+	{
+		for (Entry<String, String> entry : mapa.entrySet()) {
+			
+			if(entry.getKey().equals(nombre))
+			{
+				C.add(entry.getKey());
+				D.add(entry.getValue());
+				
+				
+		  
+			}
+			
+		   
+		}
+		
+	}
+	public String muestra(ArrayList<String> C ,ArrayList<String> D,String nombre)
+	{
+		
+		String valor="";
+		int x=0;
+			while(x<C.size())
+			{
+				if(nombre.equals(C.get(x)))
+				{
+		valor=(C.get(x)+"="+D.get(x));
+				}
+				else 
+				{
+		valor="No encontrado";
+				}
+		x++;
+			}
+			if(x==0)
+				valor="No encontrado";
+			return valor;
+		}
+		
+	
+
+	
+	public void todos()
+	{
+		
+		
+		for (Entry<String, String> entry : mapa.entrySet()) {
+			
+		    System.out.println(entry.getKey() + " = " + entry.getValue());
+			
+		
+		    
+		}
+		
+			
+	
+
+	}
+	public String charat(ArrayList<String> A,String nombre)
+	{
+		String valor="";
+		int cont=0;
+		String[] partes1 = nombre.split(" "); //HAGO SPLIT DE EL NOMBRE 
+		for(int x=0;x<A.size();x++) 
+		{
+			String[] partes2 = A.get(x).split(" "); //HAGO SPLIT DE EL ARRAY A
+			for(int y=0;y<partes2.length;y++)
+				{
+				for(int z=0;z<partes1.length;z++)
+					{
+						if(partes1[z].equals(partes2[y]))
+						{
+							cont++;
+							if(cont==2) //para que verifique si existen 2 palabras iguales en ambas cadenas ,sin importar el orden,de este modo tendremos la palabra en el orden correcto y no abra errores de palabras repetidas dentro de distintas strings.
+								valor=A.get(x);
+						}
+						
+					}
+				}
+		}
+		return valor;
+	}
+
+
+	public String loop(Integer comodin,String[] datos)
+	{
+		String retorno="";
+		Integer i=0;
+		Integer j=0;
+		while(i<comodin*2)
+		{
+			registrar(datos[i],datos[i+1]);
+			i=i+2;
+			
+		}
+		int z=i;
+		
+		while(z<datos.length)
+		{
+			nombre=datos[z];
+			
+			recibe(nombre);
+			clasifica(charat(A,nombre));
+			retorno=retorno+muestra(C,D,charat(C,nombre))+"\n";
+			
+		
+			j++;
+			z++;
+		}
+		
+		return(retorno);
+		
+	}
+
+	
+}
