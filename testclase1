@@ -1,0 +1,29 @@
+package paquete1;
+
+import java.io.IOException;
+
+import junit.framework.TestCase;
+
+public class clase1Test extends TestCase {
+
+	public void testDividir() throws IOException {
+		clase1 obj=new clase1();
+		String retorno=obj.dividir("10","3");
+		assertEquals("resultado","3",retorno);
+	}
+	public void testDividir2() throws IOException {
+		clase1 obj2=new clase1();
+		String retorno=obj2.dividir("10","Boa tarde");
+		assertEquals("resultado","java.util.InputMismatchException" ,retorno);
+	}
+	public void testDividir3() throws IOException {
+		clase1 obj3=new clase1();
+		String retorno=obj3.dividir("10","0");
+		assertEquals("resultado","java.lang.ArithmeticException: / by zero" ,retorno);
+	}
+	public void testDividir4() throws IOException {
+		clase1 obj4=new clase1();
+		String retorno=obj4.dividir("23.323","0");
+		assertEquals("resultado","java.util.InputMismatchException" ,retorno);
+	}
+}
